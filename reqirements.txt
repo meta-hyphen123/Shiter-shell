@@ -1,0 +1,24 @@
+bs4 >= 0.0.1
+requests >= 2.0.0
+argparse>=1.4.0
+colorama>=0.4.6
+httpx[socks]>=0.23.1
+trio>=0.22.0
+tqdm>=4.64.1
+mechanize==0.2.5
+beautifulsoup4==4.4.1
+argparse==1.2.1
+tld
+fuzzywuzzy
+rich
+openai
+beautifulsoup4==4.8.2
+bs4==0.0.1
+certifi==2019.11.28
+chardet==3.0.4
+idna==2.9
+lxml==4.5.0
+requests==2.23.0
+soupsieve==1.9.5
+sty==1.0.0b12
+urllib3==1.25.8
