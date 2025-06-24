@@ -1,0 +1,36 @@
+name: Build macOS .app
+
+on:
+  workflow_dispatch:          # 手动触发；如需每次 push 自动触发可换成 push
+  # push: { branches: [ main ] }
+
+jobs:
+  build-macos:
+    runs-on: macos-14          # GitHub 托管的 macOS Sonoma
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install -U pip
+          pip install pyinstaller
+          pip install -r requirements.txt    # 如果有依赖清单
+
+      - name: Build .app with PyInstaller
+        run: |
+          pyinstaller --onefile --windowed your_script.py \
+                      --name QuiltAnalyzer \
+                      --target-arch universal2
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: QuiltAnalyzer.app
+          path: dist/QuiltAnalyzer.app
